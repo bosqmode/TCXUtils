@@ -43,10 +43,16 @@ class TCXFile:
 
         return activityList
     
-    def get_calculated_totaldistance(self) -> float:
-        '''Sums up all the distances of all the activities and their trackpoints'''
+    def get_total_distance_meters(self) -> float:
+        '''Sums up all the distances of all the activities'''
         distance = 0
         for activity in self.get_activies():
-            for pt in activity.trackpoints:
-                distance += pt.distance
+            distance += activity.distancemeters
         return distance
+    
+    def get_total_duration_seconds(self) -> float:
+        '''Sums up all the times of all the activities'''
+        time = 0
+        for activity in self.get_activies():
+            time += activity.totaltimeseconds
+        return time
